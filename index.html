@@ -7,61 +7,26 @@
   <meta name="page-type" content="software">
   <meta name="site-kind" content="software">
   <meta name="description" content="아버지에게 전화를 거는 화면을 체험하는 모바일 통화 미리보기">
-  <title>통화 미리보기</title>
-  <link rel="stylesheet" href="style.css?v=2">
-  <script src="app.js?v=2" defer></script>
+  <title>아버지</title>
+  <link rel="stylesheet" href="style.css?v=3">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
-  <main class="call-screen" id="call-screen" data-stage="dialing">
-    <header class="app-header">
-      <div class="call-caption">
-        <h1>모의 통화</h1>
-        <span id="call-status" role="status">발신 중</span>
-      </div>
-      <time id="call-timer" class="timer" datetime="PT0S" aria-label="경과 시간 0초">00:00</time>
-    </header>
-
-    <figure class="contact" data-enter>
-      <img src="call-photo.jpg" width="588" height="1280" alt="황금빛 배경에 아버지 연락처가 표시된 사진">
-    </figure>
-
-    <section class="controls" aria-label="통화 조작">
-      <div class="active-controls" id="active-controls">
-        <div class="tools">
-          <button class="tool btn" id="speaker" type="button" aria-pressed="false">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>
-            <span>스피커</span>
-          </button>
-          <button class="tool btn" id="video" type="button" aria-pressed="false">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>
-            <span>영상 통화</span>
-          </button>
-          <button class="tool btn" id="mute" type="button" aria-pressed="false">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v1a6 6 0 0 0 12 0v-1M12 18v3m-3 0h6"/><path class="mute-slash" d="M3 3l18 18"/></svg>
-            <span>음소거</span>
-          </button>
-          <button class="tool btn" id="more" type="button" aria-haspopup="dialog">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
-            <span>더 보기</span>
-          </button>
-          <button class="tool btn end-action" id="end-call" type="button">
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 15a2 2 0 0 1-2-2c0-3 4.5-5 10-5s10 2 10 5a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-1.5a13 13 0 0 0-8 0V14a1 1 0 0 1-1 1z"/></svg>
-            <span>종료</span>
-          </button>
-          <button class="tool btn" id="keypad" type="button" aria-haspopup="dialog">
-            <svg class="dots" aria-hidden="true" viewBox="0 0 24 24"><circle cx="5" cy="5" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="19" r="1.5"/><circle cx="12" cy="19" r="1.5"/><circle cx="19" cy="19" r="1.5"/></svg>
-            <span>키패드</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="ended-controls" id="ended-controls" hidden>
-        <button class="main-action btn restart-action" id="restart" type="button">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 1.5 5m-1.5-9v4h4"/></svg>
-          <span>다시 걸기</span>
-        </button>
-      </div>
-    </section>
+  <main class="call-screen" id="call-screen" data-stage="dialing" aria-label="아버지 통화">
+    <img class="call-photo" src="call-photo.jpg" width="588" height="1280" alt="아버지" draggable="false">
+    <time id="call-timer" class="timer" datetime="PT0S" aria-label="경과 시간 0초">00:00</time>
+    <span id="call-status" class="sr-only" role="status">발신 중</span>
+    <div id="active-controls" role="group" aria-label="통화 조작">
+      <button class="hotspot" id="speaker" type="button" aria-label="Speaker" aria-pressed="false"></button>
+      <button class="hotspot" id="video" type="button" aria-label="FaceTime" aria-pressed="false"></button>
+      <button class="hotspot" id="mute" type="button" aria-label="Mute" aria-pressed="false"></button>
+      <button class="hotspot" id="more" type="button" aria-label="More" aria-haspopup="dialog"></button>
+      <button class="hotspot" id="end-call" type="button" aria-label="End"></button>
+      <button class="hotspot" id="keypad" type="button" aria-label="Keypad" aria-haspopup="dialog"></button>
+    </div>
+    <div class="ended-controls" id="ended-controls" hidden>
+      <button class="main-action btn" id="restart" type="button">다시 걸기</button>
+    </div>
   </main>
 
   <dialog class="control-dialog" id="more-dialog" aria-labelledby="more-title">
