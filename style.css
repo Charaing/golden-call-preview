@@ -1,27 +1,38 @@
 :root {
   color-scheme: dark;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
-  color: #fff7ed;
-  background: #1a1513;
+  font-family: system-ui, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
-
-*, *::before, *::after { box-sizing: border-box; }
-[hidden] { display: none !important; }
-body { margin: 0; min-height: 100svh; }
-button { font: inherit; color: inherit; cursor: pointer; }
-button:focus-visible { outline: 2px solid #ffcb75; outline-offset: 3px; }
-svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-
-body { display: grid; min-height: 100dvh; place-items: center; background: #100c08; }
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+body {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  height: 100vh;
+  height: 100dvh;
+  /* Extend the photograph's left edge over wide viewports. */
+  background: #9b5912 url("call-photo.jpg") left top / 58800% 100% no-repeat;
+}
 .call-screen {
   position: relative;
-  width: min(100vw, 45.9375vh);
-  width: min(100vw, 45.9375dvh);
-  aspect-ratio: 588 / 1280;
+  width: min(100%, 52vh);
+  width: min(100%, 52dvh);
+  height: 100%;
   container-type: inline-size;
 }
-.call-photo { display: block; width: 100%; height: auto; user-select: none; }
+.call-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
 /* Blend out the status bar baked into the top of the photograph. */
 .call-screen::before {
   content: "";
@@ -31,7 +42,6 @@ body { display: grid; min-height: 100dvh; place-items: center; background: #100c
   background: linear-gradient(#d6b743, #d7b643 45%, #d5b443 80%, transparent);
   pointer-events: none;
 }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .timer {
   position: absolute;
   top: 11.4%;
@@ -56,16 +66,14 @@ body { display: grid; min-height: 100dvh; place-items: center; background: #100c
   padding: 0;
   appearance: none;
   background: transparent;
-  touch-action: manipulation;
+  touch-action: none;
 }
-#video, #end-call { left: 40.13%; }
-#mute, #keypad { left: 70.06%; }
-#more, #end-call, #keypad { top: 82.03%; }
+#mute { left: 70.06%; }
 .hotspot::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  aspect-ratio: 1;
+  height: 75%;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -75,68 +83,3 @@ body { display: grid; min-height: 100dvh; place-items: center; background: #100c
 }
 .hotspot:focus-visible { outline: none; }
 .hotspot:focus-visible::before { outline: 2px solid white; outline-offset: 2px; }
-.ended-controls {
-  position: absolute;
-  inset: 65% 0 0;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(#99510a, #822c00);
-}
-.ended-controls .main-action { width: auto; min-width: 115px; border-radius: 32px; }
-
-.main-action {
-  min-height: 52px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px 18px;
-  border: 1px solid #725446;
-  border-radius: 10px;
-  background: #382b23;
-  font-weight: 700;
-}
-
-.btn { transition: transform 150ms ease, filter 150ms ease; touch-action: manipulation; }
-@media (hover: hover) { .btn:not(:disabled):hover { filter: brightness(1.13); } }
-.btn:not(:disabled):active { transform: scale(.97); }
-
-.control-dialog {
-  width: min(360px, calc(100% - 32px));
-  max-height: calc(100% - 24px);
-  margin: auto auto max(12px, env(safe-area-inset-bottom));
-  padding: 19px;
-  border: 1px solid #866359;
-  border-radius: 19px;
-  color: #fff6ea;
-  background: #2b211d;
-  box-shadow: 0 15px 65px #1e111ab0;
-}
-
-.control-dialog::backdrop { background: #2213159c; backdrop-filter: blur(5px); }
-.dialog-header, .digit-display { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.dialog-header h2 { margin: 0; font-size: 1.125rem; }
-.dialog-actions { display: grid; gap: 8px; margin-top: 12px; }
-
-.dialog-icon {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  flex: none;
-  border: 0;
-  border-radius: 10px;
-  background: #48382e;
-}
-
-.dialog-icon:disabled { opacity: .4; cursor: default; }
-.digit-display { min-width: 0; margin: 8px 0 12px; }
-.digit-display output { min-width: 0; overflow-wrap: anywhere; color: #ffd18a; font-size: 1.3rem; font-variant-numeric: tabular-nums; letter-spacing: .06em; }
-.digit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.digit-grid button { min-height: 48px; border-radius: 10px; border: 1px solid #725446; background: #48382e; font-size: 1.35rem; font-weight: 650; }
-
-@media (min-width: 600px) { .control-dialog { margin: auto; } }
-
-@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }

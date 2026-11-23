@@ -2,65 +2,21 @@
 <html lang="ko" data-type="software">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#221b18">
   <meta name="page-type" content="software">
   <meta name="site-kind" content="software">
   <meta name="description" content="아버지에게 전화를 거는 화면을 체험하는 모바일 통화 미리보기">
   <title>아버지</title>
-  <link rel="stylesheet" href="style.css?v=4">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="app.js?v=5" defer></script>
 </head>
 <body>
-  <main class="call-screen" id="call-screen" data-stage="dialing" aria-label="아버지 통화">
+  <main class="call-screen" id="call-screen" aria-label="아버지 통화">
     <img class="call-photo" src="call-photo.jpg" width="588" height="1280" alt="아버지" draggable="false">
     <time id="call-timer" class="timer" datetime="PT0S" aria-label="경과 시간 0초">00:00</time>
-    <span id="call-status" class="sr-only" role="status">발신 중</span>
-    <div id="active-controls" role="group" aria-label="통화 조작">
-      <button class="hotspot" id="speaker" type="button" aria-label="Speaker" aria-pressed="false"></button>
-      <button class="hotspot" id="video" type="button" aria-label="FaceTime" aria-pressed="false"></button>
-      <button class="hotspot" id="mute" type="button" aria-label="Mute" aria-pressed="false"></button>
-      <button class="hotspot" id="more" type="button" aria-label="More" aria-haspopup="dialog"></button>
-      <button class="hotspot" id="end-call" type="button" aria-label="End"></button>
-      <button class="hotspot" id="keypad" type="button" aria-label="Keypad" aria-haspopup="dialog"></button>
-    </div>
-    <div class="ended-controls" id="ended-controls" hidden>
-      <button class="main-action btn" id="restart" type="button">다시 걸기</button>
-    </div>
+    <button class="hotspot" id="speaker" type="button" aria-label="Speaker" aria-pressed="false"></button>
+    <button class="hotspot" id="mute" type="button" aria-label="Mute" aria-pressed="false"></button>
   </main>
-
-  <dialog class="control-dialog" id="more-dialog" aria-labelledby="more-title">
-    <div class="dialog-header">
-      <h2 id="more-title">더 보기</h2>
-      <button class="dialog-icon btn" type="button" data-close aria-label="더 보기 닫기" autofocus>
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
-      </button>
-    </div>
-    <div class="dialog-actions">
-      <button class="main-action btn" id="connect" type="button">음성 통화 연결</button>
-      <button class="main-action btn" id="reset-call" type="button">처음부터 다시 걸기</button>
-    </div>
-  </dialog>
-
-  <dialog class="control-dialog" id="keypad-dialog" aria-labelledby="keypad-title">
-    <div class="dialog-header">
-      <h2 id="keypad-title">키패드</h2>
-      <button class="dialog-icon btn" id="close-keypad" type="button" data-close aria-label="키패드 닫기" autofocus>
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
-      </button>
-    </div>
-    <div class="digit-display">
-      <output id="digits" aria-label="입력한 번호"></output>
-      <button class="dialog-icon btn" id="delete-digit" type="button" aria-label="마지막 숫자 지우기" disabled>
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 12 5-6h13v12H8zM11 10l4 4m0-4-4 4"/></svg>
-      </button>
-    </div>
-    <div class="digit-grid" id="digit-grid">
-      <button class="btn" type="button" data-digit="1">1</button><button class="btn" type="button" data-digit="2">2</button><button class="btn" type="button" data-digit="3">3</button>
-      <button class="btn" type="button" data-digit="4">4</button><button class="btn" type="button" data-digit="5">5</button><button class="btn" type="button" data-digit="6">6</button>
-      <button class="btn" type="button" data-digit="7">7</button><button class="btn" type="button" data-digit="8">8</button><button class="btn" type="button" data-digit="9">9</button>
-      <button class="btn" type="button" data-digit="*" aria-label="별표">*</button><button class="btn" type="button" data-digit="0">0</button><button class="btn" type="button" data-digit="#" aria-label="샵">#</button>
-    </div>
-  </dialog>
 </body>
 </html>
