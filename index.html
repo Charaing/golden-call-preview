@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko" data-type="software">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3bd59">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="description" content="아버지에게 전화를 거는 화면을 체험하는 모바일 통화 미리보기">
+  <title>통화 미리보기</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="call-screen" id="call-screen" data-stage="dialing">
+    <header class="app-header">
+      <span class="app-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>통화 미리보기</span>
+    </header>
+
+    <section class="contact" aria-labelledby="contact-name" data-enter>
+      <div class="contact-copy">
+        <p class="status" role="status"><span class="status-dot" aria-hidden="true"></span><span id="call-status">발신 중</span></p>
+        <h1 id="contact-name">아버지</h1>
+        <time class="timer" id="call-timer" datetime="PT0S" hidden>00:00</time>
+      </div>
+      <div class="contact-art" aria-hidden="true">
+        <div class="orbit orbit-outer"></div>
+        <div class="orbit orbit-inner"></div>
+        <div class="portrait"><span>아</span></div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="통화 조작">
+      <div class="active-controls" id="active-controls">
+        <div class="tools">
+          <button class="tool btn" id="speaker" type="button" aria-pressed="false">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>
+            <span>스피커</span>
+          </button>
+          <button class="tool btn" id="mute" type="button" aria-pressed="false">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v1a6 6 0 0 0 12 0v-1M12 18v3m-3 0h6"/><path class="mute-slash" d="M3 3l18 18"/></svg>
+            <span>음소거</span>
+          </button>
+          <button class="tool btn" id="keypad" type="button" aria-haspopup="dialog">
+            <svg class="dots" aria-hidden="true" viewBox="0 0 24 24"><circle cx="5" cy="5" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="19" r="1.5"/><circle cx="12" cy="19" r="1.5"/><circle cx="19" cy="19" r="1.5"/></svg>
+            <span>키패드</span>
+          </button>
+        </div>
+        <div class="call-actions">
+          <button class="main-action btn end-action" id="end-call" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 15a2 2 0 0 1-2-2c0-3 4.5-5 10-5s10 2 10 5a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-1.5a13 13 0 0 0-8 0V14a1 1 0 0 1-1 1z"/></svg>
+            <span>통화 종료</span>
+          </button>
+          <button class="secondary-action btn" id="connect" type="button">연결하기</button>
+        </div>
+      </div>
+
+      <div class="ended-controls" id="ended-controls" hidden>
+        <button class="main-action btn restart-action" id="restart" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 1.5 5m-1.5-9v4h4"/></svg>
+          <span>다시 걸기</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="keypad-dialog" id="keypad-dialog" aria-labelledby="keypad-title">
+    <div class="keypad-header">
+      <h2 id="keypad-title">키패드</h2>
+      <button class="dialog-icon btn" id="close-keypad" type="button" aria-label="키패드 닫기" autofocus>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="digit-display">
+      <output id="digits" aria-label="입력한 번호"></output>
+      <button class="dialog-icon btn" id="delete-digit" type="button" aria-label="마지막 숫자 지우기" disabled>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 12 5-6h13v12H8zM11 10l4 4m0-4-4 4"/></svg>
+      </button>
+    </div>
+    <div class="digit-grid" id="digit-grid">
+      <button class="btn" type="button" data-digit="1">1</button><button class="btn" type="button" data-digit="2">2</button><button class="btn" type="button" data-digit="3">3</button>
+      <button class="btn" type="button" data-digit="4">4</button><button class="btn" type="button" data-digit="5">5</button><button class="btn" type="button" data-digit="6">6</button>
+      <button class="btn" type="button" data-digit="7">7</button><button class="btn" type="button" data-digit="8">8</button><button class="btn" type="button" data-digit="9">9</button>
+      <button class="btn" type="button" data-digit="*" aria-label="별표">*</button><button class="btn" type="button" data-digit="0">0</button><button class="btn" type="button" data-digit="#" aria-label="샵">#</button>
+    </div>
+  </dialog>
+</body>
+</html>
